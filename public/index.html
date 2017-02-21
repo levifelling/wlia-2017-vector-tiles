@@ -12,7 +12,6 @@
   Levi Felling & Jeremy Holt
   <br/>
   Applied Data Consultants
-
 </div>
 
 <div>
@@ -38,7 +37,7 @@
 </div>
 
 <div>
-    How are <em>Vector Tiles</em> different
+    How are <em>Vector Tiles</em> different?
     <notes>.pbf compressed, vector and feature data, rendered by client (browser or mobile app)</notes>
 </div>
 
@@ -66,6 +65,7 @@
   <li>reduce storage</li>
   <li>dynamic rendering</li>
   <li>speed of processing</li>
+  <li>3d</li>
   </ul>
 </div>
 
@@ -76,6 +76,7 @@
   <li>vector&nbsp;only</li>
   <li>generalization&nbsp;artifacts&nbsp;(potentially)</li>
   <li>feature density, size limit</li>
+  <li>3d, extrusion of polygons but not ideal for contours
   </ul>
 </div>
 
@@ -85,6 +86,27 @@
 
 <div>
   <h2>Open Source</h2>
+  <ol>
+  <li><img src="images/postgis.jpeg" style="max-width:15%;"/><a href="http://www.postgis.net/">http://www.postgis.net</a></li>
+  <li><img src="images/gdal.png" style="max-width:15%;"/><a href="http://www.gdal.org/">http://www.gdal.org</a></li>
+  <li><img src="images/mapbox.png" style="max-width:15%;"/><a href="https://github.com/mapbox/tippecanoe">https://github.com/mapbox/tippecanoe</a></li>
+  </ol>
+  <notes>
+  The MBTiles specification is an efficient format for storing millions of tiles in a single SQLite database.
+  </notes>
+</div>
+
+<div>
+<img src="images/json2mbtiles.png"/>
+<notes>
+  156MB raw data reduced to 8MB vector tiles, 95% reduction in size
+  67 seconds to completely rebuild the vector tile cache
+  57,280 features
+</notes>
+</div>
+
+<div><h1>clipping mbtiles</h1>
+<img src="images/tilelive_clip.png"/>
 </div>
 
 <div>
@@ -93,6 +115,15 @@
 
 <div>
   <h3>Hosting Vector Tiles</h3>
+  <ul>
+  <li><a href="https://www.mapbox.com/studio">Mapbox</a></li>
+  <li><a href="https://github.com/chelm/mbtiles-server">mbtiles-server</a></li>
+  <li>ArcGIS Online</li>
+  </ul>
+  <notes>
+  Mapbox free - 50k map views or 50k mobile users / month, 5.0 GB  storage | 20 styles
+  Heroku free - hobby tier, one dyno, 512 MB Ram, 300MB max slug size
+  </notes>
 </div>
 
 <div>
@@ -103,16 +134,24 @@
   <li><a href="examples/3-mapboxgl-3d" target="_blank">3D</a></li>
   <li><a href="examples/4-mapboxgl-slider" target="_blank">Dynamic Rendering</a></li>
   <li><a href="examples/5-osm" target="_blank">OSM,&nbsp;OpenMapTiles</a></li>
+  <li><a href="http://demo.tileserver.org/" target="_blank">http://demo.tileserver.org/</a></li>
   </ul>
+  <notes>
+  use chrome dev tools and zoom out from
+  http://demo.tileserver.org/styles/positron/?raster#20/44.81196/-451.50331
+  http://demo.tileserver.org/styles/positron/?vector#20/44.81196/-451.50331
+  ~3MB vector, ~12MB Raster
+</notes>
 </div>
 
 <div>
   <h1>Resources</h1>
   <ul>
-  <li>https://openmaptiles.org/</li>
   <li>https://www.mapbox.com/mapbox-gl-js</li>
   <li>https://github.com/mapbox/awesome-vector-tiles</li>
-  <li>https://github.com/mapbox/tippecanoe</li>
+  <li>https://developers.arcgis.com/javascript</li>
+  <li>https://openmaptiles.org/</li>
+  <li>https://github.com/klokantech/tileserver-gl</li>
   </ul>
 </div>
 
@@ -120,9 +159,8 @@
   <h1>Thank You!</h1>
   <span style="font-size:30%;">
   <ul style="list-style: none;"><li>http://adc4gis.com/</li>
-  <li>https://github.com/levifelling/wlia17</li>
+  <li>https://github.com/levifelling/wlia-2017-vector-tiles</li>
   <li>https://wlia-2017-vector-tiles.herokuapp.com/</li>
-
   </ul>
   </span>
 </div>
