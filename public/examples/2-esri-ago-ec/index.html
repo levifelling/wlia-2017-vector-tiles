@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"
+  />
+  <title>Vector tiles - 4.1</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.2/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.2/"></script>
+
+
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/layers/VectorTileLayer",
+      "esri/tasks/QueryTask",
+      "esri/tasks/support/Query",
+      "esri/Graphic",
+      "esri/symbols/SimpleFillSymbol",
+      "dojo/domReady!"
+    ], function(Map, MapView, VectorTileLayer, QueryTask, Query, Graphic, SimpleFillSymbol) {
+
+      // Create a Map
+      var map = new Map();
+
+      // Make map view and bind it to the map
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-91.4831, 44.8013],
+        zoom: 10
+      });
+
+      var queryTask = new QueryTask({
+        url: "http://services5.arcgis.com/EmnKhsDdtKx5fPQm/ArcGIS/rest/services/Parcels/FeatureServer/0"
+      });
+      var query = new Query();
+
+      var fillSymbol = new SimpleFillSymbol({
+        color: [227, 139, 79, 0],
+        outline: { // autocasts as new SimpleLineSymbol()
+          color: [255, 0, 0],
+          width: 1
+        }
+      });
+
+
+      // Add the graphics to the view's graphics layer
+
+
+
+      view.on("click", function(event) {
+
+        query.geometry = event.mapPoint;
+        query.returnGeometry = true;
+        query.outFields = ["*"];
+
+        queryTask.execute(query).then(function(result){
+          console.log(result.features)
+
+          var polygonGraphic = new Graphic({
+            geometry: result.features[0].geometry,
+            symbol: fillSymbol
+          });
+
+          view.graphics.removeAll();
+          view.graphics.add(polygonGraphic);
+          //console.log(view.graphics)
+
+        });
+
+      });
+
+
+
+      /********************************************************************
+       * Add a tile layer to the map
+       *
+       * The url property must either point to the style as
+       * demonstrated below or to the URL of a Vector Tile service
+       * such as:
+       * https://basemaps.arcgis.com/b2/arcgis/rest/services/World_Basemap/VectorTileServer
+       *********************************************************************/
+      var tileLyr = new VectorTileLayer({
+        url: "http://tiles.arcgis.com/tiles/EmnKhsDdtKx5fPQm/arcgis/rest/services/basemap/VectorTileServer/resources/styles/root.json"
+      });
+
+      var parcelLyr = new VectorTileLayer({
+        url: "http://tiles.arcgis.com/tiles/EmnKhsDdtKx5fPQm/arcgis/rest/services/parcelmap/VectorTileServer/resources/styles/root.json"
+      });
+
+      map.add(tileLyr);
+      map.add(parcelLyr);
+    });
+  </script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "wlia-2017-vector-tiles",
+  "version": "0.1.0",
+  "description": "Slide deck and examples for Vector Tile presentation. Initially prepared for the WLIA 2017 Annual Conference.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "*",
+    "mbtiles": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": "https://github.com/levifelling/wlia17",
+  "author": "Levi Felling",
+  "license": "MIT"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "wlia-2017-vector-tiles",
+  "description": "Slide deck and examples for Vector Tile presentation. Initially prepared for the WLIA 2017 Annual Conference.",
+  "repository": "https://github.com/levifelling/wlia17",
+  "image": "heroku/nodejs"
+}

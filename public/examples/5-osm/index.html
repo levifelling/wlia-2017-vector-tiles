@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vector Tile - OSM, OpenMapTiles</title>
+  <script src='/lib/mapbox-gl.js'></script>
+  <script type="text/javascript" src="style.json"></script>
+  <link href='/lib/mapbox-gl.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+</head>
+<body>
+<style>
+    #menu {
+        position: absolute;
+        background: #fff;
+        padding: 10px;
+        font-family: 'Open Sans', sans-serif;
+    }
+</style>
+
+  <div id='map'></div>
+  <div id='menu'>
+    <input id='bright' type='radio' name='rtoggle' value='bright' checked='checked'>
+    <label for='bright'>OSM Bright</label>
+    <input id='dark' type='radio' name='rtoggle' value='dark'>
+    <label for='dark'>Dark Matter</label>
+    <input id='positron' type='radio' name='rtoggle' value='positron'>
+    <label for='positron'>Positron</label>
+    <br/><br/>
+    Styles from <a href='https://openmaptiles.org/styles/'>https://openmaptiles.org/styles/</a>
+</div>
+</div>
+</div>
+
+  <script>
+
+    if(window.location.host.indexOf('localhost') == -1){
+      bright.sources.openmaptiles.tiles[0] = bright.sources.openmaptiles.tiles[0].replace("http://localhost:3000", window.location.protocol + '//' +window.location.host)
+      bright.sprite = bright.sprite.replace("http://localhost:3000", window.location.protocol + '//' +window.location.host)
+      bright.glyphs = bright.glyphs.replace("http://localhost:3000", window.location.protocol + '//' +window.location.host)
+      dark.sources.openmaptiles.tiles[0] = dark.sources.openmaptiles.tiles[0].replace("http://localhost:3000", window.location.protocol + '//' +window.location.host)
+      dark.sprite = dark.sprite.replace("http://localhost:3000", window.location.protocol + '//' +window.location.host)
+      dark.glyphs = dark.glyphs.replace("http://localhost:3000", window.location.protocol + '//' +window.location.host)
+      positron.sources.openmaptiles.tiles[0] = positron.sources.openmaptiles.tiles[0].replace("http://localhost:3000", window.location.protocol + '//' +window.location.host)
+      positron.sprite = positron.sprite.replace("http://localhost:3000", window.location.protocol + '//' +window.location.host)
+      positron.glyphs = positron.glyphs.replace("http://localhost:3000", window.location.protocol + '//' +window.location.host)
+    }
+
+
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: bright,
+        hash: true
+      });
+
+      var layerList = document.getElementById('menu');
+      var inputs = layerList.getElementsByTagName('input');
+
+      function switchLayer(layer) {
+          var layerId = layer.target.id;
+          switch (layerId) {
+            case 'bright': map.setStyle(bright);break;
+            case 'dark': map.setStyle(dark);break;
+            case 'positron': map.setStyle(positron);break;
+            default: break;
+          }
+      }
+
+      for (var i = 0; i < inputs.length; i++) {
+          inputs[i].onclick = switchLayer;
+      }
+
+  </script>
+</body>
+</html>

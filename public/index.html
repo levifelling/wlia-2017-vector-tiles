@@ -1,0 +1,131 @@
+<!DOCTYPE html><html><head><title>Big</title><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+<link href='lib/big.css' rel='stylesheet' type='text/css' />
+<script src='lib/big.js'></script></head><body>
+<link href='lib/style.css' rel='stylesheet' type='text/css' />
+
+<div>
+  <h1>Vector Tiles</h1>
+  <em style='font-size:.5em'><h3>Emergent Technology for Web Mapping</h3></em>
+  <br/>
+
+
+  Levi Felling & Jeremy Holt
+  <br/>
+  Applied Data Consultants
+
+</div>
+
+<div>
+    <h1>Historical Context</h1>
+    <img src='images/history.png' style="max-width:60%;">
+</div>
+
+<div><img src='images/tiles-loading.gif'>Tiles <em>many little images</em> load faster than one big image
+<notes>browser cache</notes>
+</div>
+
+<div><img src='images/slippy-map.gif'>Slippy Map
+<notes>2005 Google Map launch</notes>
+</div>
+
+<div>
+<h1>Layers</h1>
+<ul>
+<li>Base Layers</li>
+<li>Overlay/Operational&nbsp;Layers</li>
+<notes>geojson, feature layer, UTFGrid</notes>
+</ul>
+</div>
+
+<div>
+    How are <em>Vector Tiles</em> different
+    <notes>.pbf compressed, vector and feature data, rendered by client (browser or mobile app)</notes>
+</div>
+
+<div >
+  <h1>How we got here</h1>
+  <br/><br/>
+   <img src='images/html5.png' style="max-width:60%;">
+   <img src='images/browsers.jpeg' style="max-width:60%;">
+  <notes>webgl, google maps</notes>
+</div>
+
+<div >
+  <img src='images/ie_sucks5.png'>
+  <notes>IE6-10</notes>
+</div>
+
+
+<div>
+  <h1>Vector Tile Advantages</h1>
+  <ul>
+  <li>Layers <em>base</em> = <em>overlay</em></li>
+  <li>no fixed scale levels</li>
+  <li>increased&nbsp;performance</li>
+  <li>reduce bandwidth </li>
+  <li>reduce storage</li>
+  <li>dynamic rendering</li>
+  <li>speed of processing</li>
+  </ul>
+</div>
+
+<div>
+  <h1>Limitations</h1>
+  <ul>
+  <li>wgs84</li>
+  <li>vector&nbsp;only</li>
+  <li>generalization&nbsp;artifacts&nbsp;(potentially)</li>
+  <li>feature density, size limit</li>
+  </ul>
+</div>
+
+<div>
+  <h1>Creating Vector Tiles</h1>
+</div>
+
+<div>
+  <h2>Open Source</h2>
+</div>
+
+<div>
+  <h2>ESRI</h2>
+</div>
+
+<div>
+  <h3>Hosting Vector Tiles</h3>
+</div>
+
+<div>
+  <h1>Examples</h1>
+  <ul>
+  <li><a href="examples/1-mapboxgl-mbtiles" target="_blank">MapboxGL</a></li>
+  <li><a href="examples/2-esri-ago-ec" target="_blank">ESRI AGO</a></li>
+  <li><a href="examples/3-mapboxgl-3d" target="_blank">3D</a></li>
+  <li><a href="examples/4-mapboxgl-slider" target="_blank">Dynamic Rendering</a></li>
+  <li><a href="examples/5-osm" target="_blank">OSM,&nbsp;OpenMapTiles</a></li>
+  </ul>
+</div>
+
+<div>
+  <h1>Resources</h1>
+  <ul>
+  <li>https://openmaptiles.org/</li>
+  <li>https://www.mapbox.com/mapbox-gl-js</li>
+  <li>https://github.com/mapbox/awesome-vector-tiles</li>
+  <li>https://github.com/mapbox/tippecanoe</li>
+  </ul>
+</div>
+
+<div>
+  <h1>Thank You!</h1>
+  <span style="font-size:30%;">
+  <ul style="list-style: none;"><li>http://adc4gis.com/</li>
+  <li>https://github.com/levifelling/wlia17</li>
+  <li>https://wlia-2017-vector-tiles.herokuapp.com/</li>
+
+  </ul>
+  </span>
+</div>
+
+</body>
+</html>

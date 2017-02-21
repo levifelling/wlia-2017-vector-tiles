@@ -1,0 +1,183 @@
+var style = {
+  "version": 8,
+  "name": "Basic",
+  "sources": {
+        "wgx": {
+            "type": "vector",
+            "tiles": ["http://localhost:3000/eauclaire/{z}/{x}/{y}.pbf"],
+            "maxzoom": 14
+        }
+  },
+  "center": [
+-91.4831,
+44.8013
+],
+"zoom":14,
+  "sprite": "http://localhost:3000/assets/sprite",
+  "glyphs": "http://localhost:3000/assets/font/{fontstack}/{range}.pbf",
+  "layers": [{
+    "id": "background",
+    "type": "background",
+    "paint": {
+      "background-color": "#EAEAEA"
+    }
+  },
+
+  {
+    "id": "civil_divisions",
+    "type": "fill",
+    "source": "wgx",
+    "source-layer": "civil_divisions",
+    "paint": {
+      "fill-color": {
+        "property": "cd_label",
+        "type": "categorical",
+        "stops": [
+          ["Bridge Creek", "#F2F12D"],
+          ["Brunswick", "#DCEDEE"],
+          ["City of Altoona", "#EFE0DD"],
+          ["City of Augusta", "#DDDDEE"],
+          ["City of Eau Claire", "#EAEEDF"],
+          ["Clear Creek", "#E6DBEE"],
+          ["Drammen", "#EDDFE5"],
+          ["Fairchild", "#EFDDDC"],
+          ["Fall Creek", "#E0DDEE"],
+          ["Lincoln", "#EFE0EE"],
+          ["Ludington", "#DDF0E7"],
+          ["Otter Creek", "#EAEEDF"],
+          ["Pleasant Valley", "#EDD9E8"],
+          ["Seymour", "#EDE1DE"],
+          ["Union", "#ECD6EE"],
+          ["Village of Fairchild", "#EEEADC"],
+          ["Village of Fall Creek", "#F2F12D"],
+          ["Washington", "#EDE1EE"],
+          ["Wilson", "#DDF0E7"]
+        ]
+      },
+      "fill-opacity": 0.5,
+      "fill-outline-color": "#000"
+    }
+
+  },
+  {
+    "id": "hydro_poly",
+    "type": "fill",
+    "source": "wgx",
+    "source-layer": "hydro_poly",
+    "paint": {
+                "fill-color": "#8AD3ED",
+                "fill-opacity": 0.5
+            }
+  },
+
+
+  {
+    "id": "master_centerlines",
+    "type": "line",
+    "source": "wgx",
+    "source-layer": "master_centerlines",
+    "paint": {
+      "line-color": "#838083",
+      "line-width": {
+        "base": 1,
+        "stops": [
+          [
+            13,
+            1
+          ]
+        ]
+      }
+    }
+  },
+
+
+  {
+    "id": "parcel",
+    "type": "line",
+    "source": "wgx",
+    "minzoom": 10,
+    "source-layer": "parcel",
+    "paint": {
+      "line-color": "#00B7FF",
+      "line-width": {
+        "base": 1.5,
+        "stops": [
+          [
+            13,
+            1
+          ],
+          [
+            15,
+            0.5
+          ]
+        ]
+      }
+    }
+  },
+	{
+	    "id": "parcel_label",
+	    "type": "symbol",
+	    "source": "wgx",
+      "minzoom": 16,
+	    "source-layer": "parcel",
+	    "interactive": false,
+	            "layout": {
+	              "text-font": [
+	                    "Open Sans Bold"
+	                ],
+	                "text-field": "{pin_no}",
+	                "text-justify": "center",
+	                "text-anchor": "center",
+                  "text-size": 8
+	            },
+	    "paint": {
+	      "text-color": "#7E7F7E",
+        "text-halo-color": "#FFF",
+        "text-halo-width": 2,
+        "text-halo-blur": 2
+	    }
+	  },
+	  {
+    "id": "parcel_fill",
+    "type": "fill",
+    "source": "wgx",
+    "source-layer": "parcel",
+    "paint": {
+                "fill-color": "#a0c8f0",
+                "fill-opacity": 0
+            }
+  },
+
+  {
+    "id": "parcel_hover",
+    "type": "line",
+    "source": "wgx",
+    "source-layer": "parcel",
+    "filter": [
+                "==",
+                "parcel_no",
+                ""
+            ],
+    "paint": {
+      "line-color": "#f00",
+      "line-width": {
+        "base": 3,
+        "stops": [
+          [
+            13,
+            1
+          ],
+          [
+            20,
+            2.5
+          ]
+        ]
+      }
+    }
+  }
+
+
+
+  ]
+}
+
